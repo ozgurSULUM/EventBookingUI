@@ -24,7 +24,7 @@ const EventCard: FC<IEventCard> = ({ event, eventType }) => {
 
     return (
         <Box
-            onClick={() => navigate(`/details/${event.id}`)}
+            onClick={() => navigate(`/details/${eventType}/${event.id}`)}
             _hover={{ boxShadow: `0 4px 8px 0 ${shadowColor}` }}
             cursor='pointer'
             transition='all 150ms'
@@ -38,10 +38,10 @@ const EventCard: FC<IEventCard> = ({ event, eventType }) => {
             <Box m='4'>
                 <HStack mb='4'>
                     <Tag size='sm' pl='3' pr='3' variant='solid' colorScheme={eventType === 'upcoming' ? 'green' : 'red'}>{eventType}</Tag>
-                    <Tag size='sm' pl='3' pr='3' variant='solid' colorScheme='yellow'>{'sinema'}</Tag>
+                    <Tag size='sm' pl='3' pr='3' variant='solid' colorScheme='yellow'>{event.category}</Tag>
                 </HStack>
                 <Text mb='1' fontSize='lg' fontWeight='semibold' noOfLines={1}>{event.name}</Text>
-                <Text mb='4' fontSize='sm' fontWeight='light' noOfLines={1}>{event.startdate.toDateString()} - {event.endDate.toDateString()}</Text>
+                <Text mb='4' fontSize='sm' fontWeight='light' noOfLines={1}>{event.startDate.toDateString()} - {event.endDate.toDateString()}</Text>
 
                 <Text mb='4' noOfLines={1} fontWeight='semibold'>
                     {event.description}

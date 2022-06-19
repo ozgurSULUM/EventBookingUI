@@ -7,11 +7,14 @@ import { useParams } from 'react-router-dom';
 
 
 const EventDetails: FC<any> = () => {
-    const urlParams = useParams();
+    const { eventId, eventType } = useParams();
     return (
         <Box w='100%' h='60vh'>
             <Heading>
-                {urlParams.eventId}
+                {eventType}
+            </Heading>
+            <Heading>
+                {eventId}
             </Heading>
         </Box>
     );

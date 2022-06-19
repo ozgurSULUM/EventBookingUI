@@ -26,7 +26,7 @@ const SiteNavbar: FC<any> = () => {
                         p='4'
                         borderBottom='2px solid rgba(0,0,0,0)'
                         _hover={{ borderBottom: `2px solid ${borderColor}` }}>
-                        <Text fontSize='sm' fontWeight='semibold' fontFamily='monospace'>{route[1]}</Text>
+                        <Text fontSize='md' fontWeight='semibold' fontFamily='monospace'>{route[1]}</Text>
                     </ChakraLink>
                 ))
             }

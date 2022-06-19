@@ -56,10 +56,10 @@ const Home: FC<any> = () => {
                             }}
                         >
                             <Box display='inline-block'>
-                                <Heading size='lg'>
+                                <Heading size={{ base: 'lg', sm: 'lg', md: 'lg', lg: 'xl' }}>
                                     Book your events today!
                                 </Heading>
-                                <Text size='lg' fontWeight='semibold'>There is a lot of event to pick from.</Text>
+                                <Text size={{ base: 'lg', sm: 'lg', md: 'lg', lg: 'xl' }} fontWeight='semibold'>There is a lot of event to pick from.</Text>
                             </Box>
                         </Box>
                         <Button

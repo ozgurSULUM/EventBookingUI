@@ -6,7 +6,7 @@ export interface IEvent {
     organizer: string;
     description: string,
     image: string;
-    startdate: Date;
+    startDate: Date;
     endDate: Date;
     category: string;
 }
