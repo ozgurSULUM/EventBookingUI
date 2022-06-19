@@ -9,6 +9,7 @@ import {
     Button,
     Flex
 } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 import Lottie from 'react-lottie';
 import * as HomeAnimation from '../resources/home_lottie.json';
 
@@ -23,6 +24,8 @@ const defaultAnimationOptions = {
 
 const Home: FC<any> = () => {
     const colorMode = useColorModeValue('black', 'white');
+    const reverseColorMode = useColorModeValue('white', 'black');
+    const navigate = useNavigate();
 
     return (
         <Fade in={true}>
@@ -37,6 +40,7 @@ const Home: FC<any> = () => {
                     <ScaleFade initialScale={0.9} in={true}>
                         <Box
                             borderLeft={`2px solid ${colorMode}`}
+                            height='70px'
                             pl='4'
                             _after={{
                                 display: 'inline',
@@ -52,13 +56,19 @@ const Home: FC<any> = () => {
                             }}
                         >
                             <Box display='inline-block'>
-                                <Heading>
+                                <Heading size='lg'>
                                     Book your events today!
                                 </Heading>
-                                <Text fontWeight='semibold'>There is a lot of event to pick from.</Text>
+                                <Text size='lg' fontWeight='semibold'>There is a lot of event to pick from.</Text>
                             </Box>
                         </Box>
-                        <Button colorScheme='blue' mt='8' ml='2' width='fit-content'>Upcoming Events</Button>
+                        <Button
+                            _hover={{ backgroundColor: reverseColorMode, color: colorMode }}
+                            color={reverseColorMode} backgroundColor={colorMode}
+                            mt='8'
+                            ml='2'
+                            width='fit-content'
+                            onClick={() => navigate('/upcoming')}>Upcoming Events</Button>
                     </ScaleFade>
                 </Flex>
 
@@ -70,8 +80,8 @@ const Home: FC<any> = () => {
                     <ScaleFade initialScale={0.9} in={true}>
                         <Lottie
                             options={defaultAnimationOptions}
-                            height={400}
-                            width={400}
+                            height={600}
+                            width={600}
                         />
                     </ScaleFade>
 

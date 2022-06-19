@@ -10,6 +10,8 @@ import {
 
 import Events from './components/Events';
 import Home from './components/Home';
+import EventDetails from './components/EventDetails';
+import PageNotFound from './components/PageNotFound';
 
 const container = document.getElementById("root")
 if (!container) throw new Error('Failed to find the root element');
@@ -21,9 +23,11 @@ root.render(
       <ColorModeScript />
       <Routes>
         <Route path='/' element={<App />} >
-          <Route path='/home' element={<Home />} />
-          <Route path='/upcoming' element={<Events eventType='past' />} />
-          <Route path='/past' element={<Events eventType='upcoming' />} />
+          <Route index element={<Home />} />
+          <Route path='upcoming' element={<Events eventType='upcoming' />} />
+          <Route path='past' element={<Events eventType='past' />} />
+          <Route path='details/:eventId' element={<EventDetails />} />
+          <Route path='*' element={<PageNotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

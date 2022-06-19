@@ -8,4 +8,5 @@ export interface IEvent {
     image: string;
     startdate: Date;
     endDate: Date;
+    category: string;
 }

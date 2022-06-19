@@ -21,7 +21,7 @@ const SiteHeader: FC<ISiteHeader> = ({ headerText }) => {
 
     return (
         <Flex flexDirection={{ base: 'column', sm: 'column', md: 'row', lg: 'row' }}>
-            <Center p='4' cursor='pointer' onClick={() => { navigate('/home') }}>
+            <Center p='4' cursor='pointer' onClick={() => { navigate('/') }}>
                 <Box mr='2'>
                     <BsCalendar />
                 </Box>
