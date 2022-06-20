@@ -11,7 +11,6 @@ interface IEvents {
 
 const Events: FC<IEvents> = ({ eventType }) => {
     const { isLoading, isError, data: events } = useGetEvents(eventType);
-    console.log(events);
     if (isLoading) {
         return (
             <Box w='90%' margin='auto'>

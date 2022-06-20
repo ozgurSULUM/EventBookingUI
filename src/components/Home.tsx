@@ -7,33 +7,42 @@ import {
     ScaleFade,
     Text,
     Button,
-    Flex
+    Flex,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import Lottie from 'react-lottie';
-import * as HomeAnimation from '../resources/home_lottie.json';
+import { Carousel } from 'react-responsive-carousel';
+import useGetEvents from '../hooks/useGetEvents';
+import EventCard from './EventCard';
+import { IEvent } from '../react-app-env';
 
-const defaultAnimationOptions = {
-    loop: true,
-    autplay: true,
-    animationData: HomeAnimation,
-    rendererSettings: {
-        preserveAspectRatio: "xMidYMid slice"
+const getPopularThree = (events: IEvent[] | undefined): IEvent[] | undefined => {
+    if(events){
+        const sortedEvents = events.sort((a,b)=>(a.popularity > b.popularity)? -1 : 1);
+        if(sortedEvents.length > 3){
+            return sortedEvents.slice(0,3);
+        } else {
+            return sortedEvents;
+        }
     }
-};
+}
 
 const Home: FC<any> = () => {
     const colorMode = useColorModeValue('black', 'white');
     const reverseColorMode = useColorModeValue('white', 'black');
     const navigate = useNavigate();
+    const { data: events } = useGetEvents("upcoming");
 
     return (
         <Fade in={true}>
-            <Flex margin='auto' width='90%' height='80vh'>
+            <Flex 
+                margin='auto' 
+                width='90%' 
+                height='80vh'
+                flexDirection={{base: 'column', sm: 'column', md: 'column', lg: 'row'}}>
                 <Flex
                     pt='32'
-                    ml={{ base: '-7', sm: '-7', md: '-7', lg: '-14' }}
-                    width={{ base: '100%', sm: '100%', md: '65%', lg: '50%' }}
+                    ml={{ base: '-7', sm: '-7', md:'0' }}
+                    width={{ base: '100%', sm: '100%', md: '100%', lg: '50%' }}
                     justify='center'
                     height='100%'
                 >
@@ -62,31 +71,33 @@ const Home: FC<any> = () => {
                                 <Text size={{ base: 'lg', sm: 'lg', md: 'lg', lg: 'xl' }} fontWeight='semibold'>There is a lot of event to pick from.</Text>
                             </Box>
                         </Box>
-                        <Button
-                            _hover={{ backgroundColor: reverseColorMode, color: colorMode }}
-                            color={reverseColorMode} backgroundColor={colorMode}
-                            mt='8'
-                            ml='2'
-                            width='fit-content'
-                            onClick={() => navigate('/upcoming')}>Upcoming Events</Button>
                     </ScaleFade>
                 </Flex>
 
-                <Flex display={{ base: 'none', sm: 'none', md: 'none', lg: 'flex' }}
+                <Flex
                     justify='center'
                     align='center'
-                    width='50%'
+                    mt={{base:'16', sm:'16', md:'16', lg:'0'}}
+                    width={{ base: '100%', sm: '100%', md: '100%', lg: '50%' }}
                     height='100%'>
                     <ScaleFade initialScale={0.9} in={true}>
-                        <Lottie
-                            options={defaultAnimationOptions}
-                            height={600}
-                            width={600}
-                        />
+                        <Heading fontWeight='hairline' textTransform='capitalize' textAlign='center' mb='4'>Popular Events</Heading>
+                        <Box w='340px'>
+                            <Carousel showThumbs={false} showStatus={false} stopOnHover={false} transitionTime={2} infiniteLoop autoPlay>
+                                {
+                                    getPopularThree(events)?.map((event)=>{
+                                        return <EventCard key={event.id} event={event} eventType='upcoming' />
+                                    })
+                                }
+                            </Carousel>
+                        </Box>
                     </ScaleFade>
 
                 </Flex>
             </Flex>
+            
+            
+            
         </Fade>
     );
 }

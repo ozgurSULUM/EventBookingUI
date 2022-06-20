@@ -9,7 +9,7 @@ import EventCard from './EventCard';
 import { IEvent } from '../react-app-env';
 
 interface IEventCards {
-    events: IEvent[];
+    events: IEvent[] | undefined;
     eventType: "past" | "upcoming"
 }
 
@@ -22,7 +22,7 @@ const EventCards: FC<IEventCards> = ({ events, eventType }) => {
             <Flex flexWrap='wrap' justify='center'>
 
                 {
-                    events.map((event) => (
+                    events?.map((event) => (
                         <EventCard key={event.id} event={event} eventType={eventType} />
                     ))
                 }

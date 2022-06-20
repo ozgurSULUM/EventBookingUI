@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import { IEvent } from '../react-app-env';
 
-const translateEventDates = (events: any) => {
+const translateEventDates = (events: any): IEvent[] | undefined => {
     if (events) {
         return events.map((event: any) => {
             const newEvent = { ...event };
@@ -22,7 +22,8 @@ const eventQueryFn = async (eventType: string) => {
 
 const useGetEvents = (eventType: string) => {
     const { isLoading, isError, data } = useQuery([eventType], () => eventQueryFn(eventType), {
-        refetchOnWindowFocus: false
+        refetchOnWindowFocus: false,
+        enabled: true
     });
     return { isLoading, isError, data: translateEventDates(data) };
 }

@@ -34,7 +34,7 @@ const EventCard: FC<IEventCard> = ({ event, eventType }) => {
             borderWidth='2px'
             borderRadius='lg'
             overflow='hidden'>
-            <Image w='100%' h='200px' src={event.image} fallbackSrc={imageFallbackPlaceholder} objectFit='cover' />
+            <Image w='100%' h='200px' src={event.images[0]} fallbackSrc={imageFallbackPlaceholder} objectFit='cover' />
             <Box m='4'>
                 <HStack mb='4'>
                     <Tag size='sm' pl='3' pr='3' variant='solid' colorScheme={eventType === 'upcoming' ? 'green' : 'red'}>{eventType}</Tag>
