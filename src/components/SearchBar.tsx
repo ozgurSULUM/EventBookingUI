@@ -70,7 +70,7 @@ const SearchBar: FC<any> = () => {
         if (debounce.current) {
             clearTimeout(debounce.current);
         }
-        debounce.current = setTimeout(() => handleSearch(), 700);
+        debounce.current = setTimeout(() => handleSearch(), 400);
     }, [searchValue]);
 
     return (
@@ -88,6 +88,7 @@ const SearchBar: FC<any> = () => {
             <Popover
                 isOpen={popoverIsOpen}
                 onClose={popoverOnClose}
+                closeOnBlur={false}
                 initialFocusRef={searchBarRef}
                 placement='bottom-start'>
                 <PopoverTrigger>

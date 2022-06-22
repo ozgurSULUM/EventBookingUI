@@ -14,7 +14,7 @@ import { IEvent } from '../react-app-env';
 
 interface IEventCards {
     events: IEvent[] | undefined;
-    eventType: "past" | "upcoming";
+    eventType: "passed" | "upcoming";
     filterType: "DateFilter" | "EventFilter"
 }
 
@@ -37,6 +37,7 @@ const EventCards: FC<IEventCards> = ({ events, eventType, filterType }) => {
                     filterWithPlace={filterWithPlace}
                     filteredEvents={filteredEvents}
                     setFilteredEvents={setFilteredEvents}
+                setFilterWithPlace={setFilterWithPlace}
                     eventType={eventType} />}
             {filterType === "DateFilter" &&
                 <DateFilter
@@ -44,6 +45,7 @@ const EventCards: FC<IEventCards> = ({ events, eventType, filterType }) => {
                     filterWithPlace={filterWithPlace}
                     filteredEvents={filteredEvents}
                     setFilteredEvents={setFilteredEvents}
+                setFilterWithPlace={setFilterWithPlace}
                     eventType={eventType} />}
             <Flex flexWrap='wrap' justify='center'>
                 {

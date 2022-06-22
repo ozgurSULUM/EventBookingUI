@@ -1,3 +1,10 @@
+Klasör içerisinde gerekli paketler "npm install" ile indirilir.
+API klasörü içerisinde gerekli paketler "npm install" ile indirilir.
+
+API klasörünün içerisinde "npm start" ile API çalıştırılır.
+Klasör içerisinde "npm install" ile arayüz çalıştırılır.
+
+
 This project was bootstrapped with
 [Create React App](https://github.com/facebook/create-react-app).
 

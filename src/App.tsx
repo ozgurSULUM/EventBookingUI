@@ -15,7 +15,7 @@ export const App = () => (
   <QueryClientProvider client={queryClient}>
     <ChakraProvider theme={theme}>
       <Box height='100vh'>
-        <SiteHeader headerText='Event Booking' />
+        <SiteHeader headerText='EventHub' />
         <Outlet />
       </Box>
     </ChakraProvider>

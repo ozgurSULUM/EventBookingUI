@@ -25,7 +25,7 @@ root.render(
         <Route path='/' element={<App />} >
           <Route index element={<Home />} />
           <Route path='upcoming' element={<Events eventType='upcoming' filterType='EventFilter' />} />
-          <Route path='past' element={<Events eventType='past' filterType='EventFilter' />} />
+          <Route path='past' element={<Events eventType='passed' filterType='EventFilter' />} />
           <Route path='details/:eventType/:eventId' element={<EventDetails />} />
           <Route path='*' element={<PageNotFound />} />
         </Route>

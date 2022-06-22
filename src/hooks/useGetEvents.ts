@@ -5,8 +5,18 @@ const translateEventDates = (events: any): IEvent[] | undefined => {
     if (events) {
         return events.map((event: any) => {
             const newEvent = { ...event };
-            newEvent.startDate = new Date(event.startDate);
-            newEvent.endDate = new Date(event.endDate);
+            if (event.startDate) {
+                newEvent.startDate = new Date(event.startDate);
+            } else {
+                newEvent.startDate = undefined;
+            }
+
+            if (event.endDate) {
+                newEvent.endDate = new Date(event.endDate);
+            } else {
+                newEvent.endDate = undefined;
+            }
+
             return newEvent;
         });
     }

@@ -27,7 +27,8 @@ interface IEventFilter {
     events: IEvent[] | undefined;
     filteredEvents: IEvent[] | undefined;
     setFilteredEvents: React.Dispatch<React.SetStateAction<IEvent[] | undefined>>;
-    eventType: "past" | "upcoming";
+    setFilterWithPlace: React.Dispatch<React.SetStateAction<string | undefined>>;
+    eventType: "passed" | "upcoming";
     filterWithPlace: string | undefined;
 }
 
@@ -43,7 +44,15 @@ const cities = ["Adana", "Adıyaman", "Afyon", "Ağrı", "Amasya", "Ankara", "An
 
 const eventCategories = ["Konser", "Tiyatro", "Festival", "Lansman"];
 
-const EventFilter: FC<IEventFilter> = ({ events, filterWithPlace, filteredEvents, setFilteredEvents, eventType }) => {
+const EventFilter: FC<IEventFilter> = (
+    {
+        events,
+        filterWithPlace,
+        filteredEvents,
+        setFilterWithPlace,
+        setFilteredEvents,
+        eventType
+    }) => {
     const { isOpen, onToggle, onClose } = useDisclosure();
     const [filterDate, setFilterDate] = useState<Date>();
     const [filterPlace, setFilterPlace] = useState<string>();
@@ -90,10 +99,11 @@ const EventFilter: FC<IEventFilter> = ({ events, filterWithPlace, filteredEvents
     }
 
     const resetFilter = () => {
-        setFilterPlace(undefined);
+        setFilterPlace('');
         setFilterDate(undefined);
-        setFilterCity(undefined);
-        setFilterCategory(undefined);
+        setFilterCity('');
+        setFilterCategory('');
+        setFilterWithPlace('');
         setShowReset(false);
         setFilteredEvents(events);
     }
@@ -146,7 +156,7 @@ const EventFilter: FC<IEventFilter> = ({ events, filterWithPlace, filteredEvents
                         <Divider mb='2' />
                         <DatePicker
                             minDate={eventType === "upcoming" ? new Date() : undefined}
-                            maxDate={eventType === "past" ? new Date() : undefined}
+                            maxDate={eventType === "passed" ? new Date() : undefined}
                             placeholderText='None' selected={filterDate}
                             onChange={(date: Date) => setFilterDate(date)} />
                         <Text mb='1' mt='6' fontSize='x-small' fontWeight='light' >Event City and Place</Text>

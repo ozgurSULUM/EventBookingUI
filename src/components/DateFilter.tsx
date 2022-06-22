@@ -27,7 +27,8 @@ interface IEventFilter {
     events: IEvent[] | undefined;
     filteredEvents: IEvent[] | undefined;
     setFilteredEvents: React.Dispatch<React.SetStateAction<IEvent[] | undefined>>;
-    eventType: "past" | "upcoming";
+    setFilterWithPlace: React.Dispatch<React.SetStateAction<string | undefined>>;
+    eventType: "passed" | "upcoming";
     filterWithPlace: string | undefined;
 }
 
@@ -43,7 +44,15 @@ const cities = ["Adana", "Adıyaman", "Afyon", "Ağrı", "Amasya", "Ankara", "An
 
 const eventCategories = ["Konser", "Tiyatro", "Festival", "Lansman"];
 
-const DateFilter: FC<IEventFilter> = ({ events, filterWithPlace, filteredEvents, setFilteredEvents, eventType }) => {
+const DateFilter: FC<IEventFilter> = (
+    {
+        events,
+        filterWithPlace,
+        filteredEvents,
+        setFilterWithPlace,
+        setFilteredEvents,
+        eventType
+    }) => {
     const { isOpen, onToggle, onClose } = useDisclosure();
 
     const [filterPlace, setFilterPlace] = useState<string>();
@@ -55,13 +64,13 @@ const DateFilter: FC<IEventFilter> = ({ events, filterWithPlace, filteredEvents,
     const filterEvents = () => {
         if ((filterFromDate || filterToDate) || filterPlace) {
             const wantedEvents = events?.filter((event) => {
-                if (filterFromDate) {
+                if (filterFromDate && event.endDate) {
                     if (!isBefore(filterFromDate, event.endDate)) {
                         return false;
                     }
                 }
 
-                if (filterToDate) {
+                if (filterToDate && event.startDate) {
                     if (!isAfter(filterToDate, event.startDate)) {
                         return false;
                     }
@@ -88,7 +97,8 @@ const DateFilter: FC<IEventFilter> = ({ events, filterWithPlace, filteredEvents,
     const resetFilter = () => {
         setFilterFromDate(undefined);
         setFilterToDate(undefined);
-        setFilterPlace(undefined);
+        setFilterPlace('');
+        setFilterWithPlace('');
         setShowReset(false);
         setFilteredEvents(events);
     }

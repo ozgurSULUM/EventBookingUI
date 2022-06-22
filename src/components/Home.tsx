@@ -70,9 +70,11 @@ const Home: FC<any> = () => {
                         >
                             <Box display='inline-block'>
                                 <Heading size={{ base: 'lg', sm: 'lg', md: 'lg', lg: 'xl' }}>
-                                    Book your events today!
+                                    Dont miss any events!
                                 </Heading>
-                                <Text size={{ base: 'lg', sm: 'lg', md: 'lg', lg: 'xl' }} fontWeight='semibold'>There is a lot of event to pick from.</Text>
+                                <Text size={{ base: 'lg', sm: 'lg', md: 'lg', lg: 'xl' }} fontWeight='semibold'>
+                                    There is a lot of event to look for.
+                                </Text>
                             </Box>
                         </Box>
                     </ScaleFade>

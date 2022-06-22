@@ -6,7 +6,7 @@ import EventCards from './EventCards';
 import useGetEvents from '../hooks/useGetEvents';
 
 interface IEvents {
-    eventType: "past" | "upcoming";
+    eventType: "passed" | "upcoming";
     filterType: "DateFilter" | "EventFilter";
 }
 

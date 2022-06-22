@@ -16,7 +16,7 @@ import { IEvent } from '../react-app-env';
 
 interface IEventCard {
     event: IEvent;
-    eventType: "past" | "upcoming";
+    eventType: "passed" | "upcoming";
     setFilterWithPlace: React.Dispatch<React.SetStateAction<string | undefined>> | undefined;
 }
 
@@ -43,7 +43,7 @@ const EventCard: FC<IEventCard> = ({ event, eventType, setFilterWithPlace }) => 
                     <Tag size='sm' pl='3' pr='3' variant='solid' colorScheme='yellow'>{event.category}</Tag>
                 </HStack>
                 <Text mb='1' fontSize='lg' fontWeight='semibold' noOfLines={1}>{event.name}</Text>
-                <Text mb='1' fontSize='sm' fontWeight='light' noOfLines={1}>{event.startDate.toDateString()} - {event.endDate.toDateString()}</Text>
+                <Text mb='1' fontSize='sm' fontWeight='light' noOfLines={1}>{event.startDate?.toDateString()} {event.endDate ? `- ${event.endDate.toDateString()}` : ''}</Text>
                 {
                     setFilterWithPlace &&
                     <Link
@@ -52,7 +52,7 @@ const EventCard: FC<IEventCard> = ({ event, eventType, setFilterWithPlace }) => 
                             setFilterWithPlace(event.location.place)
                         }}
                         color='blue.500'>
-                        <Text mb='4' fontSize='sm' fontWeight='light' noOfLines={1}>{event.location.place}</Text>
+                            <Text mb='4' fontSize='sm' fontWeight='light' noOfLines={1}>{event.location.city} - {event.location.place}</Text>
                     </Link>
                 }
 

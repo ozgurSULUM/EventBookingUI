@@ -14,7 +14,7 @@ app.get('/events/upcoming', (req, res) => {
     res.status(200).send(JSON.stringify(upcomingEvents));
 })
 
-app.get('/events/past', (req, res) => {
+app.get('/events/passed', (req, res) => {
     const pastEvents = getPastEvents(events);
     res.status(200).send(JSON.stringify(pastEvents));
 })

@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const navRoutes = [
     ['/upcoming', 'Upcoming Events'],
-    ['/past', 'Past Events']
+    ['/past', 'Passed Events']
 ];
 
 const SiteNavbar: FC<any> = () => {
