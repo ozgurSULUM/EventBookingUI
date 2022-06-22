@@ -10,7 +10,9 @@ import { useNavigate } from 'react-router-dom';
 import { BsCalendar } from 'react-icons/bs';
 
 import { ColorModeSwitcher } from "../ColorModeSwitcher";
+
 import SiteNavbar from './SiteNavbar';
+import SearchBar from './SearchBar';
 
 interface ISiteHeader {
     headerText: string
@@ -31,6 +33,9 @@ const SiteHeader: FC<ISiteHeader> = ({ headerText }) => {
             </Center>
             <SiteNavbar />
             <Spacer />
+            <Center>
+                <SearchBar />
+            </Center>
             <Center>
                 <ColorModeSwitcher />
             </Center>

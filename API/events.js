@@ -33,6 +33,8 @@ const events = [
         description: "İzmit Belediye Başkanı Av. Fatma Kaplan Hürriyet’in öncülüğüyle kurulan Nikomedia Kazıları İzmit Kültür, Sanat ve Eğitim Vakfı Lansmanı ile “Kayıp Roma Başkenti Nikomedia’nın Renkli Rölyefleri” adlı kitabın tanıtımı 10 Haziran’da Kocaeli Arkeoloji Müzesi’nde yapıldı. Programda Nikomedia’nın renkli rölyefleri ilk kez görücüye çıktı.",
         category: 'lansman',
         location: {
+            city: 'Kocaeli',
+            place: 'Belediye arkası',
             center: {
                 lat: 40.77180317553562,
                 lng: 29.965789052781698
@@ -75,11 +77,31 @@ const events = [
         description: "Arızlı, Kulfallı, Kabaoğlu ve Akpınar Mahallelerinde üretilen kirazlar Kuruçeşme Mahallesi Kapalı Pazar Alanında gerçekleşen Kiraz Şenliği ile vatandaşlarla buluştu. Bölgede mevsim itibariyle yetişen dört kiraz cinsi arasında yapılacak kiraz yarışması ile en güzel kirazı üreten üreticiler ödüllendirildi. Yarışmanın yanı sıra program boyunca birbirinden renkli etkinlikler gerçekleştirildi.",
         category: 'festival',
         location: {
+            city: 'Kocaeli',
+            place: 'Belediye önü',
             center: {
                 lat: 40.77180317553562,
                 lng: 29.965789052781698
             },
             zoom: 11
+        },
+        ticketPrice: {
+            isItPaid: false,
+            frontRows: {
+                price: 100,
+                from: 1,
+                to: 2
+            },
+            middleRows: {
+                price: 70,
+                from: 3,
+                to: 4
+            },
+            backRows: {
+                price: 40,
+                from: 3,
+                to: 4
+            }
         },
         popularity: 21
     },
@@ -117,6 +139,8 @@ const events = [
             },
         },
         location: {
+            city: 'Kocaeli',
+            place: 'Belediye önü',
             center: {
                 lat: 40.77180317553562,
                 lng: 29.965789052781698
@@ -158,6 +182,8 @@ const events = [
             }
         },
         location: {
+            city: 'Kocaeli',
+            place: 'Belediye önü',
             center: {
                 lat: 40.77180317553562,
                 lng: 29.965789052781698
@@ -200,6 +226,8 @@ const events = [
             }
         },
         location: {
+            city: 'Kocaeli',
+            place: 'Belediye önü',
             center: {
                 lat: 40.77180317553562,
                 lng: 29.965789052781698
@@ -236,6 +264,8 @@ const events = [
             }
         },
         location: {
+            city: 'Kocaeli',
+            place: 'Belediye önü',
             center: {
                 lat: 40.77180317553562,
                 lng: 29.965789052781698
@@ -278,6 +308,8 @@ const events = [
             }
         },
         location: {
+            city: 'Kocaeli',
+            place: 'Belediye önü',
             center: {
                 lat: 40.77180317553562,
                 lng: 29.965789052781698
@@ -320,6 +352,8 @@ const events = [
             }
         },
         location: {
+            city: 'Kocaeli',
+            place: 'Belediye önü',
             center: {
                 lat: 40.77180317553562,
                 lng: 29.965789052781698
@@ -362,6 +396,8 @@ const events = [
             }
         },
         location: {
+            city: 'Kocaeli',
+            place: 'Belediye önü',
             center: {
                 lat: 40.77180317553562,
                 lng: 29.965789052781698

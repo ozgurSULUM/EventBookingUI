@@ -6,6 +6,7 @@ import {
     Image,
     HStack,
     Tag,
+    Link,
     useColorModeValue,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
@@ -14,11 +15,12 @@ import imageFallbackPlaceholder from '../resources/event_image_placeholder.svg';
 import { IEvent } from '../react-app-env';
 
 interface IEventCard {
-    event: IEvent,
-    eventType: "past" | "upcoming"
+    event: IEvent;
+    eventType: "past" | "upcoming";
+    setFilterWithPlace: React.Dispatch<React.SetStateAction<string | undefined>> | undefined;
 }
 
-const EventCard: FC<IEventCard> = ({ event, eventType }) => {
+const EventCard: FC<IEventCard> = ({ event, eventType, setFilterWithPlace }) => {
     const shadowColor = useColorModeValue('rgba(0,0,0,0.2)', 'rgba(255,255,255,0.2)');
     const navigate = useNavigate();
 
@@ -29,7 +31,7 @@ const EventCard: FC<IEventCard> = ({ event, eventType }) => {
             cursor='pointer'
             transition='all 150ms'
             w='320px'
-            h='400px'
+            h='420px'
             m='2'
             borderWidth='2px'
             borderRadius='lg'
@@ -41,7 +43,19 @@ const EventCard: FC<IEventCard> = ({ event, eventType }) => {
                     <Tag size='sm' pl='3' pr='3' variant='solid' colorScheme='yellow'>{event.category}</Tag>
                 </HStack>
                 <Text mb='1' fontSize='lg' fontWeight='semibold' noOfLines={1}>{event.name}</Text>
-                <Text mb='4' fontSize='sm' fontWeight='light' noOfLines={1}>{event.startDate.toDateString()} - {event.endDate.toDateString()}</Text>
+                <Text mb='1' fontSize='sm' fontWeight='light' noOfLines={1}>{event.startDate.toDateString()} - {event.endDate.toDateString()}</Text>
+                {
+                    setFilterWithPlace &&
+                    <Link
+                        onClick={(ev) => {
+                            ev.stopPropagation();
+                            setFilterWithPlace(event.location.place)
+                        }}
+                        color='blue.500'>
+                        <Text mb='4' fontSize='sm' fontWeight='light' noOfLines={1}>{event.location.place}</Text>
+                    </Link>
+                }
+
 
                 <Text mb='4' noOfLines={1} fontWeight='semibold'>
                     {event.description}

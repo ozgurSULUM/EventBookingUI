@@ -27,17 +27,17 @@ const EventPrices: FC<IEventPrices> = ({ticketPrice}) => {
                 <Flex width='100%' justify='space-between' wrap='wrap'>
                     <Stat textAlign='center'>
                         <StatLabel>Front Rows</StatLabel>
-                        <StatNumber>₺{ticketPrice?.frontRows.price}.0</StatNumber>
+                        <StatNumber>{ticketPrice?.frontRows.price}.0₺</StatNumber>
                         <StatHelpText>Row {ticketPrice?.frontRows.from} to {ticketPrice.frontRows.to}</StatHelpText>
                     </Stat>
                     <Stat textAlign='center'>
                         <StatLabel>Middle Rows</StatLabel>
-                        <StatNumber>₺{ticketPrice.middleRows.price}.0</StatNumber>
+                        <StatNumber>{ticketPrice.middleRows.price}.0₺</StatNumber>
                         <StatHelpText>Row {ticketPrice.middleRows.from} to {ticketPrice.middleRows.to}</StatHelpText>
                     </Stat>
                     <Stat textAlign='center'>
                         <StatLabel>Back Rows</StatLabel>
-                        <StatNumber>₺{ticketPrice?.backRows.price}.0</StatNumber>
+                        <StatNumber>{ticketPrice?.backRows.price}.0₺</StatNumber>
                         <StatHelpText>Row {ticketPrice.backRows.from} to {ticketPrice.backRows.to}</StatHelpText>
                     </Stat>
                 </Flex>
@@ -53,7 +53,7 @@ const EventPrices: FC<IEventPrices> = ({ticketPrice}) => {
                     <Flex width='100%' justify='space-between' wrap='wrap'>
                         <Stat textAlign='center'>
                             <StatLabel>All Rows</StatLabel>
-                            <StatNumber>₺0.0</StatNumber>
+                            <StatNumber>0.0₺</StatNumber>
                             <StatHelpText>free of charge</StatHelpText>
                         </Stat>
                     </Flex>

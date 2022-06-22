@@ -19,6 +19,8 @@ interface Coordinates {
 }
 
 export interface Location {
+    city: string,
+    place: string,
     center: Coordinates;
     zoom: number;
 }

@@ -6,10 +6,11 @@ import EventCards from './EventCards';
 import useGetEvents from '../hooks/useGetEvents';
 
 interface IEvents {
-    eventType: "past" | "upcoming"
+    eventType: "past" | "upcoming";
+    filterType: "DateFilter" | "EventFilter";
 }
 
-const Events: FC<IEvents> = ({ eventType }) => {
+const Events: FC<IEvents> = ({ eventType, filterType }) => {
     const { isLoading, isError, data: events } = useGetEvents(eventType);
     if (isLoading) {
         return (
@@ -29,7 +30,7 @@ const Events: FC<IEvents> = ({ eventType }) => {
 
     return (
         <Fade in={true}>
-            <EventCards events={events} eventType={eventType} />
+            <EventCards events={events} eventType={eventType} filterType={filterType} />
         </Fade>
     )
 }

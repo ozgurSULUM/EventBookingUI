@@ -11,8 +11,12 @@ import {
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
+
 import useGetEvents from '../hooks/useGetEvents';
+
 import EventCard from './EventCard';
+import Events from './Events';
+
 import { IEvent } from '../react-app-env';
 
 const getPopularThree = (events: IEvent[] | undefined): IEvent[] | undefined => {
@@ -37,7 +41,7 @@ const Home: FC<any> = () => {
             <Flex 
                 margin='auto' 
                 width='90%' 
-                height='80vh'
+                height={{ base: '120vh', sm: '120vh', md: '120vh', lg: '90vh' }}
                 flexDirection={{base: 'column', sm: 'column', md: 'column', lg: 'row'}}>
                 <Flex
                     pt='32'
@@ -76,8 +80,7 @@ const Home: FC<any> = () => {
 
                 <Flex
                     justify='center'
-                    align='center'
-                    mt={{base:'16', sm:'16', md:'16', lg:'0'}}
+                    mt='8'
                     width={{ base: '100%', sm: '100%', md: '100%', lg: '50%' }}
                     height='100%'>
                     <ScaleFade initialScale={0.9} in={true}>
@@ -86,18 +89,17 @@ const Home: FC<any> = () => {
                             <Carousel showThumbs={false} showStatus={false} stopOnHover={false} transitionTime={2} infiniteLoop autoPlay>
                                 {
                                     getPopularThree(events)?.map((event)=>{
-                                        return <EventCard key={event.id} event={event} eventType='upcoming' />
+                                        return <EventCard setFilterWithPlace={undefined} key={event.id} event={event} eventType='upcoming' />
                                     })
                                 }
                             </Carousel>
                         </Box>
                     </ScaleFade>
-
                 </Flex>
             </Flex>
-            
-            
-            
+            <Box mt='16' h='50%'>
+                <Events eventType='upcoming' filterType='DateFilter' />
+            </Box>
         </Fade>
     );
 }
